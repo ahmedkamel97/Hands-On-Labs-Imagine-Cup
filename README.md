@@ -13,8 +13,7 @@ This version is not the latest, but it is more stable so we use it for testing t
 
 * The second version is used for development and is connected to this  GitHub repository, you can view it from here: http://hands-on-labs.azurewebsites.net/
 
-## * Please note that we currently do not have the capacity to keep the hardware and streaming live 24/7, if you wish to experiment with the robot in real-time, please let
-##us know at a.kamel@minerva.kgi.edu and we can schedule time to have the live streaming active.
+## * Please note that we currently do not have the capacity to keep the hardware and streaming live 24/7, if you wish to experiment with the robot in real-time, please let us know at a.kamel@minerva.kgi.edu and we can schedule time to have the live streaming active.
 
 * If you wish to run our web application on your local machine, please follow these instructions:
 ### Run Virtual Environment
