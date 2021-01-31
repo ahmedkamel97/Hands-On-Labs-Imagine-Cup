@@ -1,0 +1,965 @@
+:root {
+    --light-grey: #eee;
+    --dark-grey: #444;
+}
+
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+}
+
+.landing {
+    z-index: 5;
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    grid-template-columns: 1fr 220px 1fr;
+    grid-template-rows: 1fr 5% 150px 5% 1fr 5%;
+    grid-template-areas:
+        ". . help"
+        ". title ."
+        ". roboarm ."
+        ". sign-in ."
+        ". . ."
+        "credits credits credits";
+    place-items: center center;
+}
+
+.title {
+    grid-area: title;
+}
+
+.roboarm {
+    grid-area: roboarm;
+}
+
+.roboarm img {
+    height: 70px;
+    position: relative;
+
+}
+
+.anim-arm {
+    position: relative;
+    left: -15px;
+    top: 25px;
+    -webkit-transform-origin: -3px -8px;
+    transform-origin: -3px -8px;
+    -webkit-animation: spin 2s infinite ease;
+    animation: spin 2s infinite ease;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    50% {
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg)
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    50% {
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg)
+    }
+}
+
+.help_icon {
+    width: 30px;
+    height: 30px;
+}
+
+.help_icon:hover {
+    cursor: pointer;
+}
+
+.help{
+    grid-area: help;
+    place-self: start end;
+    padding: 10px 10px;
+    margin-top:  0px;
+}
+
+.from_login:hover {
+  cursor: pointer;
+}
+
+.log_in_button_parent {
+    place-self: center end;
+    margin-right: 2.5vw;
+}
+
+.log_in_button_parent p {
+    text-align: center;
+}
+
+.sign-in {
+    grid-area: sign-in;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+}
+
+.sign-in-buttons {
+    color: inherit;
+    margin-left: 5px;
+    border: 2px solid white;
+    min-width: 100px;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: var(--dark-grey);
+}
+
+
+.sign-in-buttons:hover {
+    cursor: pointer;
+}
+
+.sign-in-buttons:active {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+.credits {
+    grid-area: credits;
+}
+
+/* IF WE NEED TO ADD A MENU BAR - SCHEDULE PAGE, PEROSNAL PAGE, ETC...
+.recording {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    grid-template-columns: 1fr 10%;
+    grid-template-rows: 8% 60px 1fr 5%;
+    grid-template-areas:
+        "title settings"
+        "buttons buttons"
+        "video video"
+        "credits credits";
+    place-items: center center;
+} */
+
+.recording {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    grid-template-columns: 73% 25%;
+    grid-template-rows: 8% 1fr 5%;
+    grid-gap: 2%;
+    padding: 1%;
+    grid-template-areas:
+        "title settings"
+        "video controllers"
+        "credits credits";
+    place-items: center center;
+}
+
+.r_video {
+    grid-area: video;
+    border: 3px solid white;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.controllers{
+    grid-area: controllers;
+    border: 3px solid white;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: var(--dark-grey);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 10% 50% 30%;
+    grid-template-areas:
+        "c_title"
+        "c_toggle"
+        "c_form"
+        "c_howto";
+    place-items: center;
+}
+
+.c_title {
+    grid-area: c_title;
+}
+
+.c_toggle {
+    grid-area: c_toggle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ct {
+    border: 2px solid white;
+    height: 100%;
+    padding: 5px 0px;
+    min-width: 45%;
+    border-radius: 10px;
+    background-color: var(--dark-grey);
+    text-align: center;
+    position: relative;
+}
+
+.ct_c {
+    right: -10px;
+}
+
+.ct_a {
+    left: -10px;
+}
+
+.c_form {
+    grid-area: c_form;
+    place-self: start center;
+    display: grid;
+    max-width: 95%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "cf_title2 cf_title2 cf_title2"
+        "j_title1 j_title2 j_title3"
+        "cf_1 cf_2 cf_3"
+        "j_title4 j_title5 j_title6"
+        "cf_4 cf_5 cf_6"
+        ". . ."
+        ". . ."
+        "cf_title3 cf_title3 cf_title3"
+        "cf_7 cf_7 cf_7"
+        ". . ."
+        ". . ."
+        "cf_title4 cf_title4 cf_title4"
+        "cf_8 cf_8 cf_8"
+        ". . ."
+        ". . ."
+        ". cf_submit .";
+    place-items: center;
+    grid-gap: 3px;
+}
+
+.form-table {
+    width: 80%;
+    padding: 5px;
+    text-align: center;
+}
+
+.cf_title {
+    grid-area: cf_title;
+}
+
+.j_title1 {
+    grid-area: j_title1;
+
+}
+
+.j_title2 {
+    grid-area: j_title2;
+}
+
+.j_title3 {
+    grid-area: j_title3;
+}
+
+.j_title4 {
+    grid-area: j_title4;
+}
+
+.j_title5 {
+    grid-area: j_title5;
+}
+
+.j_title6 {
+    grid-area: j_title6;
+}
+
+.cf_title2 {
+    grid-area: cf_title2;
+    font-weight: bold;
+}
+
+.cf_title3 {
+    grid-area: cf_title3;
+    font-weight: bold;
+}
+
+.cf_title4 {
+    grid-area: cf_title4;
+    font-weight: bold;
+}
+
+.cf_1 {
+    grid-area: cf_1;
+}
+
+.cf_2 {
+    grid-area: cf_2;
+}
+
+.cf_3 {
+    grid-area: cf_3;
+}
+
+.cf_4 {
+    grid-area: cf_4;
+}
+
+.cf_5 {
+    grid-area: cf_5;
+}
+
+.cf_6 {
+    grid-area: cf_6;
+}
+
+.cf_7 {
+    grid-area: cf_7;
+}
+
+.cf_8 {
+    grid-area: cf_8;
+}
+
+.cf_sub {
+    grid-area: cf_sub;
+}
+
+.cf_11 {
+    grid-area: cf_11;
+}
+
+.cf_22 {
+    grid-area: cf_22;
+}
+
+.cf_33 {
+    grid-area: cf_33;
+}
+
+.cf_subsub {
+    grid-area: cf_subsub;
+}
+
+.cf_111 {
+    grid-area: cf_111;
+}
+
+.cf_222 {
+    grid-area: cf_222;
+}
+
+.cf_333 {
+    grid-area: cf_333;
+}
+
+.cf_submit {
+    grid-area: cf_submit;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    background-color: var(--dark-grey);
+    width: 100%;
+    font-weight: bold;
+}
+
+.cf_submit:hover {
+    cursor: pointer;
+}
+
+.c_howto {
+    grid-area: c_howto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3%;
+}
+
+.c_howto p {
+    font-size: 0.85em;
+    text-align: center;
+    padding-top: 1vh;
+}
+
+.recording_obs {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    grid-template-columns: 1fr 20%;
+    grid-template-rows: 8% 1fr 5%;
+    grid-template-areas:
+        "title settings"
+        "video video"
+        "credits credits";
+    place-items: center center;
+}
+
+.small_logo {
+    grid-area: title;
+    place-self: center start;
+    padding-left: 3%;
+}
+
+.medium_logo {
+    font-size: 1.3em;
+}
+
+.r_video {
+    grid-area: video;
+    border: 3px solid white;
+    height: 95%;
+    width: 95%;
+    background-color: black;
+    border-radius: 20px;
+}
+
+video {
+    position: absolute;
+    right: 10%;
+    bottom: 13%;
+    width: 80vw;
+    height: 70vh;
+    z-index: 0;
+    background-size: cover;
+    overflow: hidden;
+}
+
+#kaltura_player_1587453207 {
+    position: relative;
+    top: 2%;
+    left: 2%;
+    height: 96%;
+    width: 96%;
+}
+
+.buttons {
+    grid-area: buttons;
+    place-self: center end;
+    padding-right: 3%;
+
+}
+
+.main_buttons {
+    position: relative;
+    left: 5%;
+    top: 80%;
+    display: grid;
+    width: 156px;
+    height: 103px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "l t r"
+        "l d r";
+    place-items: end center;
+    grid-gap: 3px;
+}
+
+.left_buttons {
+    left: 5%;
+}
+
+.right_buttons {
+    left: 75%;
+}
+
+.main_button {
+    color: inherit;
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: black;
+}
+
+.main_button img {
+    height: 36px;
+    padding: 9px 0px 0px 9px;
+    width: auto;
+}
+
+.main_button:hover {
+    cursor: pointer;
+}
+
+.main_button:active {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+.button_up {
+    grid-area: t;
+}
+
+.button_down {
+    grid-area: d;
+}
+
+.button_right {
+    grid-area: r;
+}
+
+.button_left {
+    grid-area: l;
+}
+
+.settings_button {
+    grid-area: settings;
+    color: white;
+    height: 5vh;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.settings_button:hover,
+.settings_button:active {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.settings_button img {
+    height: 100%;
+    width: auto;
+}
+
+.settings_dropdown {
+    visibility: hidden;
+    position: absolute;
+    top: 8%;
+    right: 2%;
+    z-index: 5;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
+
+.settings_dropdown:hover,
+.settings_dropdown:active {
+    cursor: pointer;
+}
+
+.settings_dropdown_option {
+    padding: 8px;
+    width: 100%;
+    text-align: right;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: var(--dark-grey);
+}
+
+.main-page-buttons{
+    grid-area: settings;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main-page-button{
+    padding: 8px;
+    min-width: 45%;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: var(--dark-grey);
+}
+
+.upload_button:hover {
+    cursor: pointer;
+}
+
+
+.settings_dropdown_option:active {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+.loader {
+    position: absolute;
+    visibility: visible;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    z-index: 3;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 25px 1fr;
+    grid-template-areas:
+        "l_arm"
+        "l_text"
+        "l_bar";
+    place-items: end center;
+    background-color: black;
+    color: white;
+}
+
+.loader_arm {
+    margin-bottom: 40px;
+    grid-area: l_arm;
+}
+
+.loader_text {
+    grid-area: l_text;
+}
+
+.loader_bar {
+    grid-area: l_bar;
+    place-self: start center;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid var(--light-grey);
+}
+
+.loader_bar::-webkit-progress-bar {
+    border-radius: 8px;
+}
+
+.loader_bar::-webkit-progress-value {
+    background-color: var(--light-grey);
+    border-radius: 5px;
+}
+
+.loader_bar::-moz-progress-bar {
+    background-color: var(--light-grey);
+    border-radius: 5px;
+}
+
+
+/* The popup login form - hidden by default */
+.form-register {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    z-index: 3;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "form";
+    place-items: center center;
+}
+
+.form-parent {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    z-index: 3;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "form";
+    place-items: center center;
+}
+
+.form-parent-register {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    z-index: 3;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "form";
+    place-items: center center;
+}
+
+.form-popup {
+    grid-area: form;
+    display: none;
+    border: 5px solid var(--light-grey);
+    border-radius: 15px;
+    z-index: 9;
+}
+
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: black;
+    border-radius: 7px;
+    color: white;
+}
+
+.form-container input[type=email],
+.form-container input[type=password],
+.form-container input[type=text] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: white;
+}
+
+.form-container input[type=email]:focus,
+.form-container input[type=password]:focus,
+.form-container input[type=text]:focus {
+    background-color: white;
+    outline: none;
+}
+
+.form-container .btn {
+    color: white;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: var(--dark-grey);
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-container .cancel {
+    background-color: var(--dark-grey);
+}
+
+/* Show popup if there is error */
+.show {
+  visibility: visible;
+}
+#myFormRegisterError {
+  display: block;
+}
+#myFormMessage {
+  display: block;
+}
+
+.file_upload {
+    padding: 15px 0px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn:active {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+}
+
+.slider {
+    position: absolute;
+    -webkit-appearance: none;
+    width: 100%;
+    border-radius: 5px;
+    background: var(--light-grey);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    -webkit-transition: opacity .2s;
+    transition: opacity .2s;
+}
+
+.slider_hor {
+    left: 15%;
+    bottom: 80px;
+    width: 70vw;
+    height: 10px;
+}
+
+.slider_ver {
+    left: -180px;
+    top: 50%;
+    width: 70vh;
+    height: 10px;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider:focus {
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: var(--dark-grey);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: var(--dark-grey);
+    cursor: pointer;
+}
+
+.slider::-ms-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: var(--dark-grey);
+    cursor: pointer;
+}
+
+.mouseovert_text{
+  visibility: hidden;
+  width: 210px;
+  background-color: white;
+  color: grey;
+  text-align: center;
+  border-radius: 6px;
+  margin: 15px -50px;
+  padding:10px 10px;
+  position: absolute;
+  z-index: 18;
+}
+
+.mouseovert_text_sign_in{
+  visibility: hidden;
+  width: 210px;
+  background-color: white;
+  color: grey;
+  text-align: center;
+  border-radius: 6px;
+  margin: 15px -160px;
+  padding:10px 10px;
+  position: absolute;
+  z-index: 18;
+}
+
+.mouseovert_text_register{
+  visibility: hidden;
+  width: 210px;
+  background-color: white;
+  color: grey;
+  text-align: center;
+  border-radius: 6px;
+  margin: 15px -100px;
+  padding:10px 10px;
+  position: absolute;
+  z-index: 19;
+}
+
+.observe-button:hover .mouseovert_text {
+  visibility: visible;
+}
+
+.signin-button:hover .mouseovert_text_sign_in {
+  visibility: visible;
+}
+
+.register-button:hover .mouseovert_text_register {
+  visibility: visible;
+}
+
+.recording_help {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    grid-template-columns: 1fr 10%;
+    grid-template-rows: 8% 1fr 15% 5%;
+    grid-template-areas:
+        "title settings"
+        "video video"
+        "info info"
+        "credits credits";
+    place-items: center center;
+}
+
+
+.email_info {
+    grid-area: info;
+    text-align: center;
+    top: 5%;
+    left: 2%;
+    border: 3px solid white;
+    height: 70%;
+    width: 70%;
+    background-color: var(--dark-grey);
+    border-radius: 20px;
+}
+
+
+.tutorial {
+    grid-area: video;
+    top: 5%;
+    left: 2%;
+    border: 3px solid white;
+    height: 95%;
+    width: 95%;
+    background-color: var(--dark-grey);
+    border-radius: 20px;
+    padding: 5%;
+}
+
+.tutorial-video {
+    top: 12%;
+    height: 60%;
+    width: 75%;
+    
+}
+
+.txt_info {
+    padding: 2%;
+}

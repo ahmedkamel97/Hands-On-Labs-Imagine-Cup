@@ -1,0 +1,76 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Robotic Arm Viewer</title>
+    <meta name="description" content="Robotic Arm Lab | Hands-On Labs">
+    <meta name="author" content="Ahmed Kamel">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_robo.css') }}">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <!-- <script src="jquery.js"></script> -->
+</head>
+
+<body>
+    <main class="recording_obs rec_obs">
+        <div class="title small_logo medium_logo">
+                <a href="{{ url_for('welcome') }}"><h3>RoboArm: observer mode</h3></a>
+        </div>
+        <div class="log_in_button_parent">
+            <p class="sign-in-buttons log_in_button">Log in</p>
+        </div>
+
+        <div class="r_video">
+            <div id="kaltura_player_1587453207"></div>
+        </div>
+
+        <div class="credits">&copy; RoboArm Team 2020</div>
+    </main>
+    {% if message %}
+    <div class="form-parent show">
+        <div class="form-popup" id="myFormMessage">
+    {% else %}
+    <div class="form-parent">
+        <div class="form-popup" id="myForm">
+    {% endif %}
+            <form action="/login" method="POST" class="form-container">
+                {% if message %}
+                <div class="login_message">
+                    <h3>{{ message }}</h3>
+                </div>
+                {% endif %}
+                <h1>Login</h1>
+                <label for="username"><b>Username</b></label>
+                <input type="text" name="username" placeholder="Enter A Username" id="username" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" id="psw" required>
+
+                <button type="submit" class="btn">Login</button>
+                <button type="button" class="btn cancel">Close</button>
+                <div class="register_button from_login">
+                  <p>Don't have an account? Register now</p>
+                </div>
+            </form>
+          </div>
+      </div>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="https://cdnapisec.kaltura.com/p/2763741/sp/276374100/embedIframeJs/uiconf_id/45509061/partner_id/2763741"></script>
+    <script>
+kWidget.embed({
+  "targetId": "kaltura_player_1587453207",
+  "wid": "_2763741",
+  "uiconf_id": 45509061,
+  "flashvars": {},
+  "cache_st": 1587453207,
+  "entry_id": "1_k8b67b1m"
+});
+</script>
+</body></html>

@@ -1,0 +1,156 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Robotic Arm Control Room</title>
+    <meta name="description" content="Robotic Arm Lab | Hands-On Labs">
+    <meta name="author" content="Ahmed Kamel">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_robo.css') }}">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="jquery.js"></script> -->
+</head>
+
+<body>
+    <main class="recording">
+        <div class="title small_logo">
+            <a href="{{ url_for('welcome') }}">
+                <h3>Control Room</h3>
+            </a>
+        </div>
+        <!-- <button class="settings_button"><img src="static/images/cog.png" alt="settings icon"></button>-->
+        <!-- <div class="settings_dropdown">
+            <a class="settings_dropdown_option change_controls">
+                <div>Change controls</div>
+            </a>
+            <a class="settings_dropdown_option upload_button">
+                <div>Upload a code file</div>
+            </a>
+            <a href="{{ url_for('logout') }}" class="settings_dropdown_option">
+                <div>Log out</div>
+            </a>
+        </div> -->
+        <div class="main-page-buttons">
+            <p><a class="main-page-button upload_button"> Upload a code file </a></p>
+            <p> <a href="{{ url_for('logout') }}" class="main-page-button">Log out</a></p>
+        </div>
+
+
+        <div class="r_video">
+            <div id="kaltura_player_1587453207"></div>
+            <!--<div class="main_buttons left_buttons">
+                <div class="main_button button_top"><img src="static/images/a_t.png" alt="arrow up"></div>
+                <div class="main_button button_right"><img src="static/images/a_r.png" alt="arrow right"></div>
+                <div class="main_button button_down"><img src="static/images/a_d.png" alt="arrow down"></div>
+                <div class="main_button button_left"><img src="static/images/a_l.png" alt="arrow left"></div>
+            </div>-
+            <input type="range" min="1" max="100" value="50" class="slider slider_ver" id="RightLeft">
+            <input type="range" min="1" max="100" value="50" class="slider slider_hor" id="UpDown"> -->
+        </div>
+
+        <div class="controllers">
+            <h2 class="c_title">Controls</h2>
+            <!--<img class = "c_armform" src="static/images/armform.png"> -->
+            <div class="c_toggle">
+                <p class="ct ct_a">Advanced</p>
+                <p class="ct ct_c">Simple</p>
+
+            </div>
+
+            <form action="/main/simple" method="POST" class="c_coordinates c_form">
+                <p class="cf_title">Simplified Controls</p>
+
+            </form>
+
+            <form action="/main/advanced" method="POST" class="c_angles c_form">
+                <p class="cf_title2">Input Joints Angles</p>
+                <p class="j_title1 ">Axis 1</p>
+                <p class="j_title2 ">Axis 2</p>
+                <p class="j_title3 ">Axis 3</p>
+                <p class="j_title4 ">Axis 4</p>
+                <p class="j_title5 ">Axis 5</p>
+                <p class="j_title6 ">Axis 6</p>
+                {% if sent_back_angles %}
+                <input type="number" step=".01" min = -135 max = 135 class="form-table cf_1" id="fname" name="theta1" value={{ theta1 }} placeholder={{ theta1 }} title="This is the angle in degrees of joint 1, this value must be between -135 TO 135 degrees" required>
+                <input type="number" step=".01" min = -78.5 max = 135 class="form-table cf_2" id="fname" name="theta2" value={{ theta2 }} placeholder={{ theta2 }} title="This is the angle in degrees of joint 2, this value must be between -78.5 TO 135 degrees" required>
+                <input type="number" step=".01" min = -180 max = 73.9 class="form-table cf_3" id="fname" name="theta3" value={{ theta3 }} placeholder={{ theta3 }} title="This is the angle in degrees of joint 3, this value must be between -180 TO 73.9 degrees" required>
+                <input type="number" step=".01" min = -270 max = 270 class="form-table cf_4" id="fname" name="theta4" value={{ theta4 }} placeholder={{ theta4 }} title="This is the angle in degrees of joint 4, this value must be between -270 TO 270 degrees" required>
+                <input type="number" step=".01" min = -135 max = 135 class="form-table cf_5" id="fname" name="theta5" value={{ theta5 }} placeholder={{ theta5 }} title="This is the angle in degrees of joint 5, this value must be between -135 TO 135 degrees" required>
+                <input type="number" step=".01" min = -225 max = 225 class="form-table cf_6" id="fname" name="theta6" value={{ theta6 }} placeholder={{ theta6 }} title="This is the angle in degrees of joint 6, this value must be between -225 TO 225 degrees" required>
+
+
+                {% else %}
+                <input type="number" step=".01" min = -135 max = 135 class="form-table cf_1" id="fname" name="theta1" placeholder="Joint 1" value =0 title="This is the angle in degrees of joint 1, this value must be between -135 TO 135 degrees" required>
+                <input type="number" step=".01" min = -78.5 max = 135 class="form-table cf_2" id="fname" name="theta2" placeholder="Joint 2" value =0 title="This is the angle in degrees of joint 2, this value must be between -78.5 TO 135 degrees" required>
+                <input type="number" step=".01" min = -180 max = 73.9 class="form-table cf_3" id="fname" name="theta3" placeholder="Joint 3" value =0 title="This is the angle in degrees of joint 3, this value must be between -180 TO 73.9 degrees" required>
+                <input type="number" step=".01" min = -270 max = 270 class="form-table cf_4" id="fname" name="theta4" placeholder="Joint 4" value =0  title="This is the angle in degrees of joint 4, this value must be between -270 TO 270 degrees" required>
+                <input type="number" step=".01" min = -135 max = 135 class="form-table cf_5" id="fname" name="theta5" placeholder="Joint 5" value =0 title="This is the angle in degrees of joint 5, this value must be between -135 TO 135 degrees" required>
+                <input type="number" step=".01" min = -225 max = 225 class="form-table cf_6" id="fname" name="theta6" placeholder="Joint 6" value =0 title="This is the angle in degrees of joint 6, this value must be between -225 TO 225 degrees" required>
+                {% endif %}
+                <p class="cf_title3">Input Joints Speed</p>
+                {% if sent_back_speeds %}
+                <input type="number" step=".01" min=0 max=100 class="form-table cf_7" id="fname" name="speed" value={{ speed }} placeholder={{ speed }} title="This is the relative speed of all the joints, this value must be between 0-100 where 100 is the maximum speed" required>
+                {% else %}
+                <input type="number" step=".01" min=0 max=100 class="form-table cf_7" id="fname" name="speed" value = 10 title="This is the relative speed of all the joints, this value must be between 0-100 where 100 is the maximum speed" required>
+                {% endif %}
+                <p class="cf_title4">Input Gripper State</p>
+                {% if sent_back_gripper %}
+                <input type="number" step="1" min=0 max=1 class="form-table cf_8" id="fname" name="gripper" value={{ gripper }} placeholder={{ gripper }} title="This is the gripper state, this value must be either 0 OR 1 where 1 is the closed state of the gripper" required>
+                {% else %}
+                <input type="number" step="1" min=0 max=1 class="form-table cf_8" id="fname" name="gripper" value = 0 title="This is the gripper state, this value must be either 0 OR 1 where 1 is the closed state of the gripper" required>
+                {% endif %}
+
+                <input type="submit" value="Execute" class="cf_submit">
+            </form>
+
+
+            </div>
+        </div>
+
+        <div class="credits">&copy; Hands-On Labs Team 2020</div>
+    </main>
+    {% if not sent_back %}
+    <div class="loader">
+        <div class="roboarm loader_arm">
+            <img src="static/images/anim-joint.png" alt="Animated robot arm joint">
+            <img class="anim-arm" src="static/images/anim-arm.png" alt="Animated robot arm">
+        </div>
+        <p class="loader_text">Logging you in...</p>
+        <progress class="loader_bar" id="loader_bar" value="0" max="100"></progress>
+    </div>
+    {% endif %}
+
+    <div class="form-parent">
+        <div class="form-popup" id="UploadFile">
+            <form action="main.html" class="form-container">
+                <h1>Upload a .py file</h1>
+                <label for="myfile"></label>
+                <input type="file" name="myfile" id="myfile" class="file_upload" required>
+
+                <button type="submit" class="btn">Upload</button>
+                <button type="button" class="btn cancel">Close</button>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="https://cdnapisec.kaltura.com/p/2763741/sp/276374100/embedIframeJs/uiconf_id/45509061/partner_id/2763741"></script>
+    <script>
+        kWidget.embed({
+            "targetId": "kaltura_player_1587453207",
+            "wid": "_2763741",
+            "uiconf_id": 45509061,
+            "flashvars": {},
+            "cache_st": 1587453207,
+            "entry_id": "1_k8b67b1m"
+        });
+
+    </script>
+</body>
+
+</html>
