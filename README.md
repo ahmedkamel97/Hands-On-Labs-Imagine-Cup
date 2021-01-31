@@ -1,4 +1,4 @@
-# Welcome to CS162 Final Project
+# Welcome to Hands-On Labs
 
 ## Run Virtual Environment
 
